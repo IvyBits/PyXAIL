@@ -1,8 +1,5 @@
 import os
 import re
-from itertools import ifilter
-from operator import contains
-from functools import partial
 
 __all__ = ['rewhite', 'strip_clean', 'normalize']
 
@@ -11,7 +8,8 @@ rewhite = re.compile(r'\s+')
 
 
 def strip_clean(text, allow=frozenset('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz +\'')):
-    return ''.join(ifilter(partial(contains, allow), text))
+    # List comprehension is the fastest
+    return ''.join([c for c in text if c in allow])
 
 
 def normalize(text):
