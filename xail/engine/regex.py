@@ -45,6 +45,12 @@ class RegexEngine(BaseEngine):
         self.db_lock = Lock()
         self._cursor = self.db.cursor()
 
+    def __enter__(self):
+        return self.db.__enter__()
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        return self.db.__exit__(exc_type, exc_val, exc_tb)
+
     @property
     def loaded_from_file(self):
         return self._loaded_from_file

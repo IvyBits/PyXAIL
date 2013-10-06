@@ -31,7 +31,7 @@ class XAIL(object):
         multiline = False
         add_resp = resp.append
 
-        with file as file:
+        with file as file, self.matrix, self.substr, self.regex:
             for line in file:
                 line = line.strip()
                 if not line:
