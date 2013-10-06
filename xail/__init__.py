@@ -1,3 +1,3 @@
 __author__ = 'xiaomao'
 
-from xail.XAIL import XAIL
+from xail.main import XAIL
